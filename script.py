@@ -5,10 +5,9 @@ text = (
     '''
     Welcome to A* Pathfinder!\n
     This program sniffs out the shortest route linking two points, efficiently (with some exceptions).\n
-    It implements the A* algorithm, an informed greedy algorithm that utilises heuristics to explore in the right general direction,
-    preventing unnecessary complexity.\n
+    It implements the A* algorithm, an informed greedy algorithm that utilises heuristics to explore in the right general direction, avoiding unnecessary complexity.\n
     \n
-    Enter anything below to start open the program, then click to give it a Start point (Red), End point (Green), then Walls (Black).\n
+    Enter anything below to start the program, then click to give it a Start point (Red), End point (Green), then Walls (Black).\n
     When you're satisfied with your maze, press space to run the algorithm, and watch it explore!\n
     '''
 )
