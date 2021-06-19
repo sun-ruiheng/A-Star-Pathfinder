@@ -20,7 +20,7 @@ bounds = (500, 500)
 screen = pygame.display.set_mode(bounds)
 grid_length = 20
 
-matrix = [[500 for i in range(25)] for x in range(25)]
+matrix = [[5000 for i in range(25)] for x in range(25)]
 matrix2 = [[i*20 for i in range(25)] for x in range(25)]
 
 
@@ -38,9 +38,9 @@ start_coords = ()
 def clicked(pos, color):
     x = pos[0] // grid_length
     y = pos[1] // grid_length
-    value = 500
+    value = 5000
     if color == (0, 0, 0):
-        value = 1000
+        value = 10000
     pygame.draw.rect(screen, color, (x*20, y*20, 19, 19))
     matrix[y][x] = value
 
@@ -68,6 +68,10 @@ while running1:
                 color = (0, 0, 0)
             press_count += 1
             clicked(pos, color)
+        if pygame.mouse.get_pressed()[2]:
+            pos = pygame.mouse.get_pos()
+            clicked(pos, (255, 255, 255))
+            press_count -= 1
         if pygame.key.get_pressed()[pygame.K_SPACE] and press_count > 1:
             running1 = False
 
@@ -94,7 +98,7 @@ def get_neighbors(pos):
         (pos[0], pos[1] + 1),
         (pos[0], pos[1] - 1)
         ]
-    for neighbor in neighbors:
+    for neighbor in neighbors[:]:
         if neighbor[0] > 24 or neighbor[1] > 24 or neighbor[0] < 0 or neighbor[1] < 0:
             neighbors.remove(neighbor)
     return neighbors
@@ -118,7 +122,9 @@ while running2:
         matrix[current_y][current_x] = current[1] #replace d-value only with something smaller
 
     for neig in get_neighbors(current[2]): #add to heap in format [t_value, d_value, coords]
-        if matrix[neig[1]][neig[0]] != 500:
+        print(neig[1])
+        print(neig[0])
+        if matrix[neig[1]][neig[0]] != 5000:
             continue
         if neig == end_coords:
             running2 = False
