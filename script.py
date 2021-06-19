@@ -95,7 +95,7 @@ def get_neighbors(pos):
         (pos[0], pos[1] - 1)
         ]
     for neighbor in neighbors:
-        if neighbor[0] > 24 or neighbor[1] > 24:
+        if neighbor[0] > 24 or neighbor[1] > 24 or neighbor[0] < 0 or neighbor[1] < 0:
             neighbors.remove(neighbor)
     return neighbors
 
@@ -122,7 +122,6 @@ while running2:
             continue
         if neig == end_coords:
             running2 = False
-            break
         neigneigs = get_neighbors(neig)
         source_d = min([matrix[neigneig[1]][neigneig[0]] for neigneig in neigneigs])
         d_value = 1 + source_d
@@ -133,7 +132,8 @@ while running2:
     current_x = current[2][0]
     current_y = current[2][1]
     grey = (150, 150, 150)
-    pygame.draw.rect(screen, grey, (current_x*20, current_y*20, 19, 19))
+    if running2:
+        pygame.draw.rect(screen, grey, (current_x*20, current_y*20, 19, 19))
 
     pygame.display.update()
 
