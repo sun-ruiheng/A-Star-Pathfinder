@@ -24,7 +24,7 @@ Having reached the End, I again use a Min-Heap, but by tracking D-values this ti
 
 **Requirements:**
 1. If using on Replit: nothing.
-   Oh, here it is by the way: replit.com/@sunruiheng/A-Star-Pathfinder
+   Oh, here it is by the way: **replit.com/@sunruiheng/A-Star-Pathfinder**
 
 2. If using locally:
       - Python
@@ -32,4 +32,4 @@ Having reached the End, I again use a Min-Heap, but by tracking D-values this ti
    
    1) Clone the repository
    2) Open script.py locally from your file explorer
-   3) Enjoy
+   3) Enjoy!
