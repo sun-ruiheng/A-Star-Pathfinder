@@ -49,31 +49,63 @@ running2 = True
 running3 = True
 running4 = True
 # running1 is the loop where the user clicks around to set start, end, and walls
+# while running1:
+#     pygame.time.delay(60)
+#
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             running2 = False
+#             pygame.quit()
+#         if pygame.mouse.get_pressed()[0]:
+#             pos = pygame.mouse.get_pos()
+#             if press_count == 0:
+#                 color = (255, 0, 0)
+#                 start_coords = (pos[0] // grid_length, pos[1] // grid_length)
+#             elif press_count == 1:
+#                 color = (0, 255, 0)
+#                 end_coords = (pos[0] // grid_length, pos[1] // grid_length)
+#             else:
+#                 color = (0, 0, 0)
+#             press_count += 1
+#             clicked(pos, color)
+#         if pygame.mouse.get_pressed()[2]:
+#             pos = pygame.mouse.get_pos()
+#             clicked(pos, (255, 255, 255))
+#             press_count -= 1
+#         if pygame.key.get_pressed()[pygame.K_SPACE] and press_count > 1:
+#             running1 = False
+#
+#
+#
+#     pygame.display.update()
+
+
+
 while running1:
     pygame.time.delay(60)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running2 = False
-            pygame.quit()
-        if pygame.mouse.get_pressed()[0]:
-            pos = pygame.mouse.get_pos()
-            if press_count == 0:
-                color = (255, 0, 0)
-                start_coords = (pos[0] // grid_length, pos[1] // grid_length)
-            elif press_count == 1:
-                color = (0, 255, 0)
-                end_coords = (pos[0] // grid_length, pos[1] // grid_length)
-            else:
-                color = (0, 0, 0)
-            press_count += 1
-            clicked(pos, color)
-        if pygame.mouse.get_pressed()[2]:
-            pos = pygame.mouse.get_pos()
-            clicked(pos, (255, 255, 255))
-            press_count -= 1
-        if pygame.key.get_pressed()[pygame.K_SPACE] and press_count > 1:
-            running1 = False
+    event = pygame.event.poll()
+    if event.type == pygame.QUIT:
+        running2 = False
+        pygame.quit()
+    if pygame.mouse.get_pressed()[0]:
+        pos = pygame.mouse.get_pos()
+        if press_count == 0:
+            color = (255, 0, 0)
+            start_coords = (pos[0] // grid_length, pos[1] // grid_length)
+        elif press_count == 1:
+            color = (0, 255, 0)
+            end_coords = (pos[0] // grid_length, pos[1] // grid_length)
+        else:
+            color = (0, 0, 0)
+        press_count += 1
+        clicked(pos, color)
+    if pygame.mouse.get_pressed()[2]:
+        pos = pygame.mouse.get_pos()
+        clicked(pos, (255, 255, 255))
+        press_count -= 1
+    if pygame.key.get_pressed()[pygame.K_SPACE] and press_count > 1:
+        running1 = False
 
 
 
