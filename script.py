@@ -88,18 +88,26 @@ while running1:
     if event.type == pygame.QUIT:
         running2 = False
         pygame.quit()
-    if pygame.mouse.get_pressed()[0]:
-        pos = pygame.mouse.get_pos()
-        if press_count == 0:
-            color = (255, 0, 0)
-            start_coords = (pos[0] // grid_length, pos[1] // grid_length)
-        elif press_count == 1:
-            color = (0, 255, 0)
-            end_coords = (pos[0] // grid_length, pos[1] // grid_length)
-        else:
+    if press_count < 2:
+
+        if event.type == pygame.MOUSEBUTTONUP:
+            pos = pygame.mouse.get_pos()
+            if press_count == 0:
+                color = (255, 0, 0)
+                start_coords = (pos[0] // grid_length, pos[1] // grid_length)
+            else:
+                color = (0, 255, 0)
+                end_coords = (pos[0] // grid_length, pos[1] // grid_length)
+            press_count += 1
+            clicked(pos, color)
+    else:
+        if pygame.mouse.get_pressed()[0]:
+            pos = pygame.mouse.get_pos()
             color = (0, 0, 0)
-        press_count += 1
-        clicked(pos, color)
+            press_count += 1
+            clicked(pos, color)
+
+
     if pygame.mouse.get_pressed()[2]:
         pos = pygame.mouse.get_pos()
         clicked(pos, (255, 255, 255))
