@@ -122,8 +122,6 @@ while running2:
         matrix[current_y][current_x] = current[1] #replace d-value only with something smaller
 
     for neig in get_neighbors(current[2]): #add to heap in format [t_value, d_value, coords]
-        print(neig[1])
-        print(neig[0])
         if matrix[neig[1]][neig[0]] != 5000:
             continue
         if neig == end_coords:
