@@ -11,19 +11,20 @@ The A* Algorithm is an informed and intelligent greedy algorithm that utilises h
 
 In this program, I introduced three metrics to each tile:
 
-**1. H-value:** The heuristic value measures the estimated closeness of the tile to the End point. It is calculated by the straight line distance from it to the End coordinates.
+**1. D-value:** The distance value measures the minimum distance taken to travel to this point from the Start point.
 
-**2. D-value:** This measures the minimum distance taken to travel to that point from the Start point.
+**2. H-value:** The heuristic value measures the estimated proximity of the tile to the End point. It is calculated by the straight-line distance from it to the End coordinates.
 
-**3. T-value:** T = H + D. This sum of (distance already traveled to get here) and (estimated distance left from here to the End) provides a valuation of our confidence in this route. The smaller the T-value, the more worth it it is to explore this path.
+**3. T-value:** The total value T = D + H. This sum of D (distance already traveled to get here) and H (estimated distance left from here to the End) provides a valuation of our confidence in this route. The smaller the T-value, the more worth it it is to explore this path.
 
-So, I utilised the Heaps data structure and added each potential path to it, retrieving the one with the minimum T-value each time. Repeatedly done, this finally leads us to the End.
+So, I utilise the Heaps data structure and added each explorable neighboring point to it, then retrieve the one with the minimum T-value each time. Repeatedly done, this eventually leads us to the End.
 
 Having reached the End, I again use a Min-Heap, but by tracking D-values this time, I work backward to draw the shortest path back to the Start.
 
 
 **Requirements:**
 1. If using on Replit: nothing.
+   Oh, here it is by the way: replit.com/@sunruiheng/A-Star-Pathfinder
 
 2. If using locally:
       - Python
