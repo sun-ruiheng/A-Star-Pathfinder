@@ -16,6 +16,10 @@ response = input(text)
 if response:
     pygame.init()
 
+pygame.display.set_caption(" A* Pathfinder")
+icon = pygame.image.load('maze.png')
+pygame.display.set_icon(icon)
+
 bounds = (500, 500)
 screen = pygame.display.set_mode(bounds)
 grid_length = 20
@@ -48,39 +52,9 @@ running1 = True
 running2 = True
 running3 = True
 running4 = True
+
+
 # running1 is the loop where the user clicks around to set start, end, and walls
-# while running1:
-#     pygame.time.delay(60)
-#
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             running2 = False
-#             pygame.quit()
-#         if pygame.mouse.get_pressed()[0]:
-#             pos = pygame.mouse.get_pos()
-#             if press_count == 0:
-#                 color = (255, 0, 0)
-#                 start_coords = (pos[0] // grid_length, pos[1] // grid_length)
-#             elif press_count == 1:
-#                 color = (0, 255, 0)
-#                 end_coords = (pos[0] // grid_length, pos[1] // grid_length)
-#             else:
-#                 color = (0, 0, 0)
-#             press_count += 1
-#             clicked(pos, color)
-#         if pygame.mouse.get_pressed()[2]:
-#             pos = pygame.mouse.get_pos()
-#             clicked(pos, (255, 255, 255))
-#             press_count -= 1
-#         if pygame.key.get_pressed()[pygame.K_SPACE] and press_count > 1:
-#             running1 = False
-#
-#
-#
-#     pygame.display.update()
-
-
-
 while running1:
     pygame.time.delay(60)
 
@@ -116,9 +90,7 @@ while running1:
         running1 = False
 
 
-
     pygame.display.update()
-
 
 
 
@@ -145,9 +117,8 @@ def get_neighbors(pos):
 
 
 current = [get_t_value(start_coords, 0), 0, start_coords]
-
-
 heap = MinHeap()
+
 #running2 is the algorithm doing its thing
 while running2:
     pygame.time.delay(50)
@@ -166,6 +137,7 @@ while running2:
             continue
         if neig == end_coords:
             running2 = False
+        # we need to find neig's neighbor that has lowest d_value
         neigneigs = get_neighbors(neig)
         source_d = min([matrix[neigneig[1]][neigneig[0]] for neigneig in neigneigs])
         d_value = 1 + source_d
@@ -185,7 +157,8 @@ while running2:
 current = [1, end_coords]
 heap = MinHeap()
 matrix[start_coords[1]][start_coords[0]] = -1
-#to find the shortest path back to start
+
+#running3 is to find the shortest path back to start
 while running3:
     pygame.time.delay(50)
     ev = pygame.event.poll()
@@ -210,6 +183,7 @@ while running3:
         pygame.draw.rect(screen, orange, (current_x * 20, current_y * 20, 19, 19))
     pygame.display.update()
 
+#running4 doesnt do anything besides keeping the window alive
 while running4:
     pygame.time.delay(60)
     ev = pygame.event.poll()
