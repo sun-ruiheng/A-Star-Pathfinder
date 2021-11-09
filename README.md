@@ -17,10 +17,11 @@ In this program, I introduced three metrics to each tile:
 
 **3. T-value:** The total value T = D + H. This sum of D (distance already traveled to get here) and H (estimated distance left from here to the End) provides a valuation of our confidence in this route. The smaller the T-value, the more worth it it is to explore this path.
 
-So, I utilise the Heaps data structure and added each explorable neighboring point to it, then retrieve the one with the minimum T-value each time. Repeatedly done, this eventually leads us to the End.
+So, I utilise the Heaps data structure and added each explorable neighboring point to it, then retrieve the one with the minimum T-value each time. With a Min-Heap, we only have to constantly reconfigure to ensure the root node has minimum value, boosting efficiency* at the expense of precision in ordering the rest. Repeatedly done, this eventually leads us to the End.
 
 Having reached the End, I again use a Min-Heap, but by tracking D-values this time, I work backward to draw the shortest path back to the Start.
 
+*Efficiency: Compared to O(n<sup>2</sup>) efficiency of Bubble Sort and Insertion Sort, Heapsort allows for O(log(n)).
 
 **Requirements:**
 1. If using on Replit: nothing.
