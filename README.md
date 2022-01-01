@@ -16,8 +16,9 @@ In this program, I introduced three metrics to each tile:
 **2. H-value:** The heuristic value measures the estimated proximity of the tile to the End point. It is calculated by the straight-line distance from it to the End coordinates.
 
 **3. T-value:** The total value T = D + H. This sum of D (distance already traveled to get here) and H (estimated distance left from here to the End) provides a valuation of our confidence in this route. The smaller the T-value, the more worth it it is to explore this path.
+_(I lazily assume a 1:1 ratio between D and H as components of T. There must be a better ratio for efficiency, where H exerts a greater influence on T than D does, because the straight-line distance used for H is likely an underestimate of the actual distance left. I might run some statistical study to find a better equation T = D + xH, where x is a constant greater than one.)_
 
-So, I utilised the Heaps data structure and added each explorable neighboring point to it, then retrieve the one with the minimum T-value each time. With a Min-Heap, we only have to constantly reconfigure to ensure the root node has minimum value, boosting efficiency* at the expense of precision in ordering the rest. Repeatedly done, this eventually leads us to the End.
+During exploration, I utilise the Heaps data structure and add each explorable neighboring point to it, then retrieve the one with the minimum T-value each time. With a Min-Heap, we only have to constantly reconfigure to ensure the root node has minimum value, boosting efficiency* at the expense of precision in ordering the rest. Repeatedly done, this eventually leads us to the End.
 
 Having reached the End, I again use a Min-Heap, but by tracking D-values this time, I work backward to draw the shortest path back to the Start.
 
