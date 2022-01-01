@@ -112,7 +112,7 @@ def lets_go():
 
 
     def get_t_value(pos, d_value):
-        return straight_distance(pos) + d_value
+        return straight_distance(pos)*1.5 + d_value #I use 1.5 as the coefficient for now. Refer to README.
 
 
     def get_neighbors(pos):
